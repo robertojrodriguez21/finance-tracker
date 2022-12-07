@@ -1,4 +1,4 @@
-# Budget Application
+# Budget App
 
 ## Date: 12/15/2022
 
