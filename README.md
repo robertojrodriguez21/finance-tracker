@@ -16,9 +16,11 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 
 ---
 
-## **_Trello Board_**
+## **_Getting Started_**
 
-### [Finance Tracker Trello Board](https://trello.com/b/rIJwg9G5/finance-tracker)
+### - [Trello Board](https://trello.com/b/rIJwg9G5/finance-tracker)
+
+### - [Deployed Site]() (Coming Soon)
 
 ---
 
@@ -50,10 +52,8 @@ Coming Soon
 
 ## **_Future Updates_**
 
+- [ ] Authentication
 - [ ] View Transactions by Day, Week, and Month
-- [ ] X
-- [ ] Y
-- [ ] Z
 
 ---
 
