@@ -26,19 +26,18 @@ module.exports = {
         allowNull: false
       },
       limit: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
         allowNull: false
       },
       balance: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
         allowNull: false
       },
       minPayment: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DOUBLE
       },
       dueDate: {
-        type: Sequelize.DATE,
-        allowNull: false
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

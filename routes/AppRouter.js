@@ -1,0 +1,10 @@
+const Router = require('express').Router()
+// const AuthRouter = require('./AuthRouter')
+const UserRouter = require('./UserRouter')
+const AccountRouter = require('./AccountRouter')
+const TransactionRouter = require('./TransactionRouter')
+// Router.use('/auth', AuthRouter)
+Router.use('/user', UserRouter)
+Router.use('/account', AccountRouter)
+Router.use('/transaction', TransactionRouter)
+module.exports = Router

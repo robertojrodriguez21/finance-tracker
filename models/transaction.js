@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       date: DataTypes.DATE,
-      amount: DataTypes.INTEGER
+      amount: DataTypes.DOUBLE
     },
     {
       sequelize,

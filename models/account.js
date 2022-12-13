@@ -31,18 +31,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       limit: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         allowNull: false
       },
       balance: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.DOUBLE,
         allowNull: false
       },
-      minPayment: DataTypes.INTEGER,
-      dueDate: {
-        type: DataTypes.DATE,
-        allowNull: false
-      }
+      minPayment: DataTypes.DOUBLE,
+      dueDate: DataTypes.DATE
     },
     {
       sequelize,
