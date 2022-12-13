@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 
-const Nav = ({user}) => {
-  return user ? (
+const Nav = ({user, authenticated, handleLogout}) => {
+  return user && authenticated ? (
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <Link class="navbar-brand" to={'/'}>Finance Tracker</Link>
@@ -18,10 +18,10 @@ const Nav = ({user}) => {
             </li>
           </ul>
           <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello (User)!</a>
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hello {user.firstName}!</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">My Profile</a>
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" onClick={handleLogout}>Logout</a>
             </div>
           </div>
         </div>
