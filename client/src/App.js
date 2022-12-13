@@ -15,12 +15,16 @@ import CreateAccount from './pages/CreateAccount'
 import Nav from './components/Nav'
 import Account from './components/Account'
 import Transaction from './components/Transaction'
+import axios from 'axios'
 
-const BASE_URL = 'http://localhost:3001/'
+const BASE_URL = 'http://localhost:3001'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
+  const [users, setUsers] = useState([])
+  const [accounts, setAccounts] = useState([])
+  const [transactions, setTransactions] = useState([])
 
   // Logout function
   const handleLogout = () => {
@@ -42,6 +46,15 @@ function App() {
     if (token) {
       checkToken()
     }
+  }, [])
+
+  useEffect(() => {
+    const getUsers = async () => {
+      let response = await axios.get(`${BASE_URL}/user`)
+      setUsers(response.data)
+    }
+
+    getUsers()
   }, [])
 
   return user && authenticated ? (
@@ -82,7 +95,10 @@ function App() {
               />
             }
           />
-          <Route path="/createProfile" element={<CreateProfile />} />
+          <Route
+            path="/createProfile"
+            element={<CreateProfile users={users} />}
+          />
           <Route
             path="/accounts"
             element={
