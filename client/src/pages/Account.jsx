@@ -45,9 +45,9 @@ const Account = ({user, BASE_URL}) => {
   }
 
   return (
-    <div classNameName="container text-start">
+    <div className="container text-start">
       <br />
-      <h1>{account.name} <small classNameName="text-muted">{accountType(account.type)}</small></h1>
+      <h1>{account.name} <small className="text-muted">{accountType(account.type)}</small></h1>
       <hr />
       <h2>Balance</h2>
       <h5>${account.balance.toFixed(2)}</h5>
