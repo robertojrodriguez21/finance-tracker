@@ -19,19 +19,27 @@ const Accounts = ({user, BASE_URL}) => {
     switch (type) {
       case 1:
         return 'Checking'
-        break;
       case 2:
         return 'Savings'
-        break;
       case 3:
         return 'Credit Card'
-        break;
       case 4:
         return 'Loan'
-        break;
       default:
         return 'N/A'
-        break;
+    }
+  }
+
+  const dueDateString = (date) => {
+    switch (date) {
+      case 1:
+        return '1st of each month'
+      case 2:
+        return '2nd of each month'
+      case 3:
+        return '3rd of each month'
+      default:
+        return date + 'th of each month'
     }
   }
 
@@ -56,15 +64,17 @@ const Accounts = ({user, BASE_URL}) => {
         </thead>
         <tbody>
           {accounts.map((account) => (
-            <tr class="table-active" onClick={() => {navigate(`/account/${account.id}`)}}>
+            <tr class="table-active" onClick={() => {navigate(`/accounts/${account.id}`)}}>
               <th scope="row">{account.name}</th>
               <td>{accountType(account.type)}</td>
               <td>${account.balance.toFixed(2)}</td>
-              <td>${account.limit.toFixed(2)}</td>
-              {account.minPayment ? 
-                <>
+              {account.limit || account.limit === 0 ? 
+                <td>${account.limit.toFixed(2)}</td> :
+                <td>Limit not available</td>
+              }
+              {account.minPayment ? <>
                 <td>${account.minPayment.toFixed(2)}</td>
-                <td>{account.dueDate}</td>
+                <td>{dueDateString(account.dueDate)}</td>
                 </> : <>
                 <td>No Payment</td> 
                 <td>No Payment</td> 

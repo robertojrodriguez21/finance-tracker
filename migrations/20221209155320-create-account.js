@@ -26,8 +26,7 @@ module.exports = {
         allowNull: false
       },
       limit: {
-        type: Sequelize.DOUBLE,
-        allowNull: false
+        type: Sequelize.DOUBLE
       },
       balance: {
         type: Sequelize.DOUBLE,

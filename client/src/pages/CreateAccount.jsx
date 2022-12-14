@@ -52,11 +52,12 @@ const CreateAccount = ({userId, BASE_URL}) => {
           <input required onChange={handleChange} value={formValues.balance} name='balance' type="text" class="form-control" id="floatingBalance" placeholder="Balance"></input>
           <label for="floatingBalance">Balance</label>
         </div>
+        {parseInt(formValues.type) !== 4 && formValues.type !== '' ? 
         <div class="col-4 offset-4 form-floating mb-3">
           <input required onChange={handleChange} value={formValues.limit} name='limit' type="text" class="form-control" id="floatingLimit" placeholder="Account Limit"></input>
           <label for="floatingLimit">Account Limit</label>
           <small class="text-muted">For checking and saving accounts, enter zero.</small>
-        </div>
+        </div> : null}
         {parseInt(formValues.type) === 3 || parseInt(formValues.type) === 4 ? 
         <>
           <div class="col-4 offset-4 form-floating">

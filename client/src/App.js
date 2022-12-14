@@ -11,11 +11,10 @@ import EditTransaction from './pages/EditTransaction'
 import CreateTransaction from './pages/CreateTransaction'
 import Accounts from './pages/Accounts'
 import CreateAccount from './pages/CreateAccount'
+import Account from './pages/Account'
+import Transaction from './pages/Transaction'
 // Components
 import Nav from './components/Nav'
-import Account from './components/Account'
-import Transaction from './components/Transaction'
-import axios from 'axios'
 
 const BASE_URL = 'http://localhost:3001'
 
@@ -62,7 +61,10 @@ function App() {
             path="/accounts"
             element={<Accounts user={user} BASE_URL={BASE_URL} />}
           />
-          <Route path="/accounts/:id" element={<Account />} />
+          <Route
+            path="/accounts/:id"
+            element={<Account user={user} BASE_URL={BASE_URL} />}
+          />
           <Route
             path="/accounts/create"
             element={<CreateAccount userId={user.id} BASE_URL={BASE_URL} />}

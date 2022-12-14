@@ -30,10 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      limit: {
-        type: DataTypes.DOUBLE,
-        allowNull: false
-      },
+      limit: DataTypes.DOUBLE,
       balance: {
         type: DataTypes.DOUBLE,
         allowNull: false
