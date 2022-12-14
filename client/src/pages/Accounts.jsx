@@ -46,12 +46,12 @@ const Accounts = ({user, BASE_URL}) => {
   return (
     <div className="container text-start">
       <br></br>
-      <div class="container row">
-        <h1 class="col-10" >Your Accounts</h1>
-        <button type="button" class="col-2 btn btn-success btn-lg" onClick={() => {navigate('/accounts/create')}}>Create Account</button>
+      <div className="container row">
+        <h1 className="col-10" >Your Accounts</h1>
+        <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/accounts/create')}}>Create Account</button>
       </div>
       <br></br>
-      <table class="table table-hover">
+      <table className="table table-hover">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -64,7 +64,7 @@ const Accounts = ({user, BASE_URL}) => {
         </thead>
         <tbody>
           {accounts.map((account) => (
-            <tr class="table-active" onClick={() => {navigate(`/accounts/${account.id}`)}}>
+            <tr key={account.id} className="table-active" onClick={() => {navigate(`/accounts/${account.id}`)}}>
               <th scope="row">{account.name}</th>
               <td>{accountType(account.type)}</td>
               <td>${account.balance.toFixed(2)}</td>

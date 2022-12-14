@@ -11,7 +11,9 @@ const CreateTransaction = async (req, res) => {
 
 const GetTransactions = async (req, res) => {
   try {
-    const transactions = await Transaction.findAll()
+    const transactions = await Transaction.findAll({
+      where: { userId: req.params.user_id }
+    })
     res.send(transactions)
   } catch (error) {
     return res.status(500).send(error.message)

@@ -5,7 +5,7 @@ import axios from "axios";
 
 const Account = ({user, BASE_URL}) => {
   let { id } = useParams()
-  const [account, setAccount] = useState()
+  const [account, setAccount] = useState({name: '', userId: 0, type: 0, limit: 0.0, balance: 0.0, minPayment: 0.0, dueDate: ''})
 
   useEffect(() => {
     const getAccount = async () => {
@@ -45,9 +45,9 @@ const Account = ({user, BASE_URL}) => {
   }
 
   return (
-    <div className="container text-start">
+    <div classNameName="container text-start">
       <br />
-      <h1>{account.name} <small className="text-muted">{accountType(account.type)}</small></h1>
+      <h1>{account.name} <small classNameName="text-muted">{accountType(account.type)}</small></h1>
       <hr />
       <h2>Balance</h2>
       <h5>${account.balance.toFixed(2)}</h5>

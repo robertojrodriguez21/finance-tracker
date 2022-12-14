@@ -23,21 +23,21 @@ const Login = (props) => {
     <>
     <br></br>
     <h1>Login</h1>
-    <form class="container" onSubmit={handleSubmit}>
-      <div class="col-4 offset-4 form-floating mb-3">
-        <input required onChange={handleChange} value={formValues.email} name='email' type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></input>
+    <form className="container" onSubmit={handleSubmit}>
+      <div className="col-4 offset-4 form-floating mb-3">
+        <input required onChange={handleChange} value={formValues.email} name='email' type="email" className="form-control" id="floatingInput" placeholder="name@example.com"></input>
         <label for="floatingInput">Email address</label>
       </div>
-      <div class="col-4 offset-4 form-floating">
-        <input required onChange={handleChange} value={formValues.password} name='password' type="password" class="form-control" id="floatingPassword" placeholder="Password"></input>
+      <div className="col-4 offset-4 form-floating">
+        <input required onChange={handleChange} value={formValues.password} name='password' type="password" className="form-control" id="floatingPassword" placeholder="Password"></input>
         <label for="floatingPassword">Password</label>
       </div>
       <br></br>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit" className="btn btn-primary">Login</button>
     </form>
     <br></br>
-    <div class='text-muted'>Need an account <Link class='text-muted'  to='/profile/create'>Create Account</Link></div>
-    <div class='text-muted' >Forgot your password <Link class='text-muted' to='/resetPassword'>Reset Password</Link></div>
+    <div className='text-muted'>Need an account <Link className='text-muted'  to='/profile/create'>Create Account</Link></div>
+    <div className='text-muted' >Forgot your password <Link className='text-muted' to='/resetPassword'>Reset Password</Link></div>
     </>
   )
 }

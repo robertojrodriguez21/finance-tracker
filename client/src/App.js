@@ -69,7 +69,10 @@ function App() {
             path="/accounts/create"
             element={<CreateAccount userId={user.id} BASE_URL={BASE_URL} />}
           />
-          <Route path="/transactions" element={<Transactions />} />
+          <Route
+            path="/transactions"
+            element={<Transactions user={user} BASE_URL={BASE_URL} />}
+          />
           <Route path="/transactions/:id" element={<Transaction />} />
           <Route path="/transactions/:id/edit" element={<EditTransaction />} />
           <Route path="/transactions/create" element={<CreateTransaction />} />

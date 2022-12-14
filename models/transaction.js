@@ -9,11 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Transaction.belongsTo(models.Account, { foreignKey: 'accountId' })
+      Transaction.belongsTo(models.User, { foreignKey: 'userId' })
     }
   }
   Transaction.init(
     {
       name: DataTypes.STRING,
+      userId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'user',
+          key: 'id'
+        }
+      },
       accountId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
