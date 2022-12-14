@@ -1,12 +1,23 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { RegisterUser } from '../services/Auth'
+import axios from 'axios'
 
-const CreateProfile = (props) => {
+const CreateProfile = ({BASE_URL}) => {
   const [formValues, setFormValues] = useState({ firstName: '', lastName: '', middleName: '', email: '', password: '', verifyPassword: ''})
   const [passwordVerified, togglePasswordVerified] = useState(true)
   const [emailUsed, toggleEmailUsed] = useState(false)
+  const [usersEmails, setUsersEmails] = useState([])
   let navigate = useNavigate()
+
+  useEffect(() => {
+    const getUsersEmails = async () => {
+      let response = await axios.get(`${BASE_URL}/user/emails`)
+      setUsersEmails(response.data)
+    }
+
+    getUsersEmails()
+  }, [])
 
   const handleChange = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
@@ -14,37 +25,43 @@ const CreateProfile = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-    props.users.forEach(user => {
-      if (user.email === formValues.email) {
-        toggleEmailUsed(true)
-      }
-    });
+    console.log('START')
 
     if (formValues.password !== formValues.verifyPassword) {
       togglePasswordVerified(false)
     } else if (formValues.password === formValues.verifyPassword) {
       togglePasswordVerified(true)
-      await RegisterUser({
-        firstName: formValues.firstName,
-        lastName: formValues.lastName,
-        email: formValues.email,
-        password: formValues.password,
-        verifyPassword: formValues.verifyPassword,
-        location: formValues.location
+      toggleEmailUsed(false)
+
+      usersEmails.forEach(email => {
+        if (email.email === formValues.email) {
+          toggleEmailUsed(true)
+          console.log('SET TO TRUE')
+        } 
       })
 
-      togglePasswordVerified(true)
-      toggleEmailUsed(false)
-      setFormValues({
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-          verifyPassword: '',
-          location: ''
-      })
-      navigate('/')
+      console.log('After forEach')
+      console.log(emailUsed)
+      if (!emailUsed && passwordVerified) {
+        await RegisterUser({
+          firstName: formValues.firstName,
+          lastName: formValues.lastName,
+          middleName: formValues.middleName,
+          email: formValues.email,
+          password: formValues.password
+        })
+  
+        togglePasswordVerified(true)
+        setFormValues({
+            firstName: '',
+            lastName: '',
+            middleName: '',
+            email: '',
+            password: '',
+            verifyPassword: ''
+        })
+        navigate('/')
+      } 
     }
   }
 
@@ -76,21 +93,26 @@ const CreateProfile = (props) => {
           <label for="floatingEmail">Email address</label>
         </div>
       }
-      <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating mb-3">
-        <input required onChange={handleChange} value={formValues.password} name='password' type="password" class="form-control" id="floatingPassword" placeholder="Password"></input>
-        <label for="floatingPassword">Password</label>
-      </div>
-      {passwordVerified ? 
+      {passwordVerified ? <>
+        <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating mb-3">
+          <input required onChange={handleChange} value={formValues.password} name='password' type="password" class="form-control" id="floatingPassword" placeholder="Password"></input>
+          <label for="floatingPassword">Password</label>
+        </div>
         <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating mb-3">
           <input required onChange={handleChange} value={formValues.verifyPassword} name='verifyPassword' type="password" class="form-control" id="floatingVerifyPassword" placeholder="Verify password"></input>
           <label for="floatingVerifyPassword">Verify Password</label>
-        </div> : 
+        </div> 
+        </> : <>
+        <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating mb-3">
+          <input required onChange={handleChange} value={formValues.password} name='password' type="password" class="form-control is-invalid" id="floatingPassword" placeholder="Password"></input>
+          <label for="floatingPassword">Password</label>
+        </div>
         <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating mb-3">
           <input required onChange={handleChange} value={formValues.verifyPassword} name='verifyPassword' type="password" class="form-control is-invalid" id="floatingVerifyPassword" placeholder="Verify password"></input>
           <label for="floatingVerifyPassword">Verify Password</label>
           <div class="invalid-feedback">Passwords don't match, try again.</div>
-      </div>
-      }
+        </div>
+      </> }
       <br></br>
       <button type="submit" class="btn btn-primary">Create Account</button>
     </form>

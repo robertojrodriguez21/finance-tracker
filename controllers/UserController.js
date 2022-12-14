@@ -18,6 +18,16 @@ const GetUsers = async (req, res) => {
   }
 }
 
+const GetUsersEmails = async (req, res) => {
+  try {
+    const emails = await User.findAll({ attributes: ['email'] })
+    console.log(emails)
+    res.send(emails)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 const GetUser = async (req, res) => {
   try {
     const user = await User.findOne({
@@ -54,6 +64,7 @@ const DeleteUser = async (req, res) => {
 
 module.exports = {
   GetUsers,
+  GetUsersEmails,
   GetUser,
   CreateUser,
   UpdateUser,

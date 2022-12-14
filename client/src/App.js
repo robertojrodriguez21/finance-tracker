@@ -22,7 +22,6 @@ const BASE_URL = 'http://localhost:3001'
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-  const [users, setUsers] = useState([])
   const [accounts, setAccounts] = useState([])
   const [transactions, setTransactions] = useState([])
 
@@ -48,15 +47,6 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    const getUsers = async () => {
-      let response = await axios.get(`${BASE_URL}/user`)
-      setUsers(response.data)
-    }
-
-    getUsers()
-  }, [])
-
   return user && authenticated ? (
     <div className="App">
       <header>
@@ -68,7 +58,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home user={user} />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/accounts/:id" element={<Account />} />
           <Route path="/accounts/create" element={<CreateAccount />} />
@@ -87,7 +77,7 @@ function App() {
       <main>
         <Routes>
           <Route
-            path="/"
+            path="/*"
             element={
               <Login
                 setUser={setUser}
@@ -97,70 +87,7 @@ function App() {
           />
           <Route
             path="/createProfile"
-            element={<CreateProfile users={users} />}
-          />
-          <Route
-            path="/accounts"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/accounts/:id"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/accounts/:id/edit"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/transactions"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/transactions/:id"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/transactions/:id/edit"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="/transactions/create"
-            element={
-              <Login
-                setUser={setUser}
-                toggleAuthenticated={toggleAuthenticated}
-              />
-            }
+            element={<CreateProfile BASE_URL={BASE_URL} />}
           />
         </Routes>
       </main>
