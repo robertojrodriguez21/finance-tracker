@@ -74,7 +74,7 @@ const Transactions = ({user, BASE_URL}) => {
           {transactions.map((transaction) => (
             <tr key={transaction.id} className="table-active" onClick={() => {navigate(`/transactions/${transaction.id}`)}}>
               <th scope="row">{transaction.name}</th>
-              <td>{getAccountName(transaction.accountId)} - {getAccountType(transaction.accountId)}</td>
+              <td>{getAccountName(transaction.accountId)} <small className="text-muted">{getAccountType(transaction.accountId)}</small></td>
               <td>{transaction.date}</td>
               <td>${transaction.amount.toFixed(2)}</td>
             </tr>

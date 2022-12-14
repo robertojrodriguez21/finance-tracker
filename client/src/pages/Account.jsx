@@ -1,11 +1,22 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 const Account = ({user, BASE_URL}) => {
   let { id } = useParams()
+  let navigate = useNavigate()
   const [account, setAccount] = useState({name: '', userId: 0, type: 0, limit: 0.0, balance: 0.0, minPayment: 0.0, dueDate: ''})
+  const [transactions, setTransactions] = useState([])
+
+  useEffect(() => {
+    const getUserTransactions = async () => {
+      let response = await axios.get(`${BASE_URL}/transaction/${user.id}`)
+      setTransactions(response.data)
+    }
+
+    getUserTransactions()
+  }, [])
 
   useEffect(() => {
     const getAccount = async () => {
@@ -67,6 +78,36 @@ const Account = ({user, BASE_URL}) => {
         <h2>Payment Due Date</h2>
         <h5>No Payment</h5>
       </>}
+      <hr />
+      <div className="container text-start">
+        <div className="container row">
+          <h1 className="col-10" >Recent Transactions</h1>
+          <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/transactions')}}>View All</button>
+        </div>
+        <br></br>
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Account</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {transactions.map((transaction) => (
+              transaction.accountId === account.id ?
+              <tr key={transaction.id} className="table-active" onClick={() => {navigate(`/transactions/${transaction.id}`)}}>
+                <th scope="row">{transaction.name}</th>
+                <td>{account.name} <small className="text-muted">{accountType(account.type)}</small></td>
+                <td>{transaction.date}</td>
+                <td>${transaction.amount.toFixed(2)}</td>
+              </tr>
+              : null
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }
