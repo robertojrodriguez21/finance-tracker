@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams } from "react-router-dom"
+import { Navigate, useNavigate, useParams } from "react-router-dom"
 
 const Transaction = ({user, BASE_URL}) => {
   let { id } = useParams()
+  let navigate = useNavigate()
   const [transaction, setTransaction] = useState({userId: '', accountId: '', name: '', date: '', amount: 0.0})
   const [accounts, setAccounts] = useState([])
 
@@ -52,8 +53,9 @@ const Transaction = ({user, BASE_URL}) => {
     }
   }
 
-  const deleteTransaction = () => {
-
+  const deleteTransaction = async () => {
+    await axios.delete(`${BASE_URL}/transaction/${user.id}/${id}`)
+    navigate(`/accounts/${transaction.accountId}`)
   }
 
   return (
