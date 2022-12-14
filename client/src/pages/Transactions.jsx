@@ -27,7 +27,7 @@ const Transactions = ({user, BASE_URL}) => {
   }, [])
 
   const getAccountName = (accountId) => {
-    accounts.map((account) => {
+    accounts.forEach((account) => {
       if (accountId === account.id) {
         console.log(account.name)
         return account.name

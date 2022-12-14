@@ -26,11 +26,11 @@ const Login = (props) => {
     <form className="container" onSubmit={handleSubmit}>
       <div className="col-4 offset-4 form-floating mb-3">
         <input required onChange={handleChange} value={formValues.email} name='email' type="email" className="form-control" id="floatingInput" placeholder="name@example.com"></input>
-        <label for="floatingInput">Email address</label>
+        <label htmlFor="floatingInput">Email address</label>
       </div>
       <div className="col-4 offset-4 form-floating">
         <input required onChange={handleChange} value={formValues.password} name='password' type="password" className="form-control" id="floatingPassword" placeholder="Password"></input>
-        <label for="floatingPassword">Password</label>
+        <label htmlFor="floatingPassword">Password</label>
       </div>
       <br></br>
       <button type="submit" className="btn btn-primary">Login</button>

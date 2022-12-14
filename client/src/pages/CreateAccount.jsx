@@ -36,10 +36,10 @@ const CreateAccount = ({userId, BASE_URL}) => {
       <form className="container" onSubmit={handleSubmit}>
         <div className="col-4 offset-4 form-floating">
           <input required onChange={handleChange} value={formValues.name} name='name' type="text" className="form-control" id="floatingName" placeholder="Name"></input>
-          <label for="floatingName">Name</label>
+          <label htmlFor="floatingName">Name</label>
         </div>
         <div className="col-4 offset-4 form-group mb-3">
-          <label for="accountType" className="form-label mt-4">Type of Account</label>
+          <label htmlFor="accountType" className="form-label mt-4">Type of Account</label>
           <select name='type' onChange={handleChange} className="form-select" id="accountType">
             <option>Select</option>
             <option value={1}>Checking</option>
@@ -50,22 +50,22 @@ const CreateAccount = ({userId, BASE_URL}) => {
         </div>
         <div className="col-4 offset-4 form-floating mb-3">
           <input required onChange={handleChange} value={formValues.balance} name='balance' type="text" className="form-control" id="floatingBalance" placeholder="Balance"></input>
-          <label for="floatingBalance">Balance</label>
+          <label htmlFor="floatingBalance">Balance</label>
         </div>
         {parseInt(formValues.type) !== 4 && formValues.type !== '' ? 
         <div className="col-4 offset-4 form-floating mb-3">
           <input required onChange={handleChange} value={formValues.limit} name='limit' type="text" className="form-control" id="floatingLimit" placeholder="Account Limit"></input>
-          <label for="floatingLimit">Account Limit</label>
+          <label htmlFor="floatingLimit">Account Limit</label>
           <small className="text-muted">For checking and saving accounts, enter zero.</small>
         </div> : null}
         {parseInt(formValues.type) === 3 || parseInt(formValues.type) === 4 ? 
         <>
           <div className="col-4 offset-4 form-floating">
             <input required onChange={handleChange} value={formValues.minPayment} name='minPayment' type="text" className="form-control" id="floatingMinPayment" placeholder="Payment Minimum"></input>
-            <label for="floatingMinPayment">Payment Minimum</label>
+            <label htmlFor="floatingMinPayment">Payment Minimum</label>
           </div>
           <div className="col-4 offset-4 form-group mb-3">
-            <label for="dueDate" className="form-label mt-4">Payment Due Date</label>
+            <label htmlFor="dueDate" className="form-label mt-4">Payment Due Date</label>
             <select name='dueDate' onChange={handleChange} className="form-select" id="dueDate">
               <option>Select</option>
               <option value={1}>1</option>
