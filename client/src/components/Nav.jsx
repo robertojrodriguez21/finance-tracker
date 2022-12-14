@@ -1,9 +1,10 @@
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Nav = ({user, authenticated, handleLogout}) => {
+  let navigate = useNavigate()
   return user && authenticated ? (
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
+      <div class="container">
         <Link class="navbar-brand" to={'/'}>Finance Tracker</Link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -11,10 +12,10 @@ const Nav = ({user, authenticated, handleLogout}) => {
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Accounts</a>
+              <Link class="nav-link" to={'/accounts'}>Accounts</Link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Transactions</a>
+              <Link class="nav-link" to={'/transactions'}>Transactions</Link>
             </li>
           </ul>
           <div class="nav-item dropdown">

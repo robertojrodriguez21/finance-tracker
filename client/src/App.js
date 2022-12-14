@@ -58,7 +58,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home user={user} BASE_URL={BASE_URL} />} />
-          <Route path="/accounts" element={<Accounts />} />
+          <Route
+            path="/accounts"
+            element={<Accounts user={user} BASE_URL={BASE_URL} />}
+          />
           <Route path="/accounts/:id" element={<Account />} />
           <Route path="/accounts/create" element={<CreateAccount />} />
           <Route path="/transactions" element={<Transactions />} />
