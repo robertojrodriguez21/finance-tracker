@@ -30,7 +30,7 @@ const Nav = ({user, authenticated, handleLogout}) => {
     </nav>
   ) : (
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
+      <div class="container">
         <Link class="navbar-brand" to={'/'}>Finance Tracker</Link>
       </div>
     </nav>

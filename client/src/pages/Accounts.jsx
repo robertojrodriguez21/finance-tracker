@@ -21,9 +21,12 @@ const Accounts = ({user, BASE_URL}) => {
         return 'Checking'
         break;
       case 2:
-        return 'Credit Card'
+        return 'Savings'
         break;
       case 3:
+        return 'Credit Card'
+        break;
+      case 4:
         return 'Loan'
         break;
       default:
@@ -37,7 +40,7 @@ const Accounts = ({user, BASE_URL}) => {
       <br></br>
       <div class="container row">
         <h1 class="col-10" >Your Accounts</h1>
-        <button type="button" class=" col-2 btn btn-success btn-lg" onClick={() => {navigate('/createAccount')}}>Create Account</button>
+        <button type="button" class="col-2 btn btn-success btn-lg" onClick={() => {navigate('/accounts/create')}}>Create Account</button>
       </div>
       <br></br>
       <table class="table table-hover">
@@ -52,9 +55,8 @@ const Accounts = ({user, BASE_URL}) => {
           </tr>
         </thead>
         <tbody>
-          <tr class="table-active">
-            {accounts.map((account) => (
-              <>
+          {accounts.map((account) => (
+            <tr class="table-active" onClick={() => {navigate(`/account/${account.id}`)}}>
               <th scope="row">{account.name}</th>
               <td>{accountType(account.type)}</td>
               <td>${account.balance.toFixed(2)}</td>
@@ -67,9 +69,8 @@ const Accounts = ({user, BASE_URL}) => {
                 <td>No Payment</td> 
                 <td>No Payment</td> 
               </>}
-              </>
-            ))}
-          </tr>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

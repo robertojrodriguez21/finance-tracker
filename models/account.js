@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       minPayment: DataTypes.DOUBLE,
-      dueDate: DataTypes.DATE
+      dueDate: DataTypes.INTEGER
     },
     {
       sequelize,

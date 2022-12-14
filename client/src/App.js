@@ -88,7 +88,7 @@ function App() {
             }
           />
           <Route
-            path="/createProfile"
+            path="/profile/create"
             element={<CreateProfile BASE_URL={BASE_URL} />}
           />
         </Routes>

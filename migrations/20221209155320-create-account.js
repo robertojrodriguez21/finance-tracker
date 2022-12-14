@@ -37,7 +37,7 @@ module.exports = {
         type: Sequelize.DOUBLE
       },
       dueDate: {
-        type: Sequelize.DATE
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

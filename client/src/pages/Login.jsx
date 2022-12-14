@@ -23,12 +23,12 @@ const Login = (props) => {
     <>
     <br></br>
     <h1>Login</h1>
-    <form className="container" onSubmit={handleSubmit}>
-      <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating mb-3">
+    <form class="container" onSubmit={handleSubmit}>
+      <div class="col-4 offset-4 form-floating mb-3">
         <input required onChange={handleChange} value={formValues.email} name='email' type="email" class="form-control" id="floatingInput" placeholder="name@example.com"></input>
         <label for="floatingInput">Email address</label>
       </div>
-      <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 form-floating">
+      <div class="col-4 offset-4 form-floating">
         <input required onChange={handleChange} value={formValues.password} name='password' type="password" class="form-control" id="floatingPassword" placeholder="Password"></input>
         <label for="floatingPassword">Password</label>
       </div>
@@ -36,7 +36,7 @@ const Login = (props) => {
       <button type="submit" class="btn btn-primary">Login</button>
     </form>
     <br></br>
-    <div class='text-muted'>Need an account <Link class='text-muted'  to='/createProfile'>Create Account</Link></div>
+    <div class='text-muted'>Need an account <Link class='text-muted'  to='/profile/create'>Create Account</Link></div>
     <div class='text-muted' >Forgot your password <Link class='text-muted' to='/resetPassword'>Reset Password</Link></div>
     </>
   )
