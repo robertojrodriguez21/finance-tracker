@@ -55,10 +55,17 @@ const Account = ({user, BASE_URL}) => {
     }
   }
 
+  const deleteAccount = () => {
+    
+  }
+
   return (
     <div className="container text-start">
       <br />
-      <h1>{account.name} <small className="text-muted">{accountType(account.type)}</small></h1>
+      <div className="container row">
+        <h1 className="col-10">{account.name} <small className="text-muted">{accountType(account.type)}</small></h1>
+        <button type="button" className="col-2 btn btn-danger btn-lg" onClick={deleteAccount}>Delete</button>
+      </div>
       <hr />
       <h2>Balance</h2>
       <h5>${account.balance.toFixed(2)}</h5>
@@ -81,8 +88,8 @@ const Account = ({user, BASE_URL}) => {
       <hr />
       <div className="container text-start">
         <div className="container row">
-          <h1 className="col-10" >Recent Transactions</h1>
-          <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/transactions')}}>View All</button>
+          <h1 className="col-10" >Transactions</h1>
+          <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/transactions/create')}}>Create Transaction</button>
         </div>
         <br></br>
         <table className="table table-hover">

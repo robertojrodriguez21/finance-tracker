@@ -57,8 +57,8 @@ const Transactions = ({user, BASE_URL}) => {
     <div className="container text-start">
       <br></br>
       <div className="container row">
-        <h1 className="col-10" >Recent Transactions</h1>
-        <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/transactions')}}>View All</button>
+        <h1 className="col-10" >Transactions</h1>
+        <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/transactions/create')}}>Create Transaction</button>
       </div>
       <br></br>
       <table className="table table-hover">

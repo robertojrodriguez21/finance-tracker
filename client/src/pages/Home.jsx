@@ -1,10 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import Accounts from "./Accounts";
 import Transactions from "./Transactions";
 
 const Home = ({user, BASE_URL}) => {
-  let navigate = useNavigate()
-
   return (
     <div className="container text-start">
       <br></br>

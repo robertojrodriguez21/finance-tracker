@@ -52,10 +52,17 @@ const Transaction = ({user, BASE_URL}) => {
     }
   }
 
+  const deleteTransaction = () => {
+
+  }
+
   return (
     <div className="container text-start">
       <br></br>
-      <h1 className="col-10" >{transaction.name}</h1>
+      <div className="container row">
+        <h1 className="col-10" >{transaction.name}</h1>
+        <button type="button" className="col-2 btn btn-danger btn-lg" onClick={deleteTransaction}>Delete</button>
+      </div>
       <hr />
       <h2>Account</h2>
       <h5>{getAccountName(transaction.accountId)} <small className="text-muted">{getAccountType(transaction.accountId)}</small></h5>
