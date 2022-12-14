@@ -22,7 +22,6 @@ const BASE_URL = 'http://localhost:3001'
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-  const [accounts, setAccounts] = useState([])
   const [transactions, setTransactions] = useState([])
 
   // Logout function
@@ -58,7 +57,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home user={user} />} />
+          <Route path="/" element={<Home user={user} BASE_URL={BASE_URL} />} />
           <Route path="/accounts" element={<Accounts />} />
           <Route path="/accounts/:id" element={<Account />} />
           <Route path="/accounts/create" element={<CreateAccount />} />

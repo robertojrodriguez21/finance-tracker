@@ -1,4 +1,7 @@
-const Home = ({user}) => {
+import Accounts from "./Accounts";
+
+const Home = ({user, BASE_URL}) => {
+
   return (
     <div className="container text-start">
       <br></br>
@@ -7,9 +10,7 @@ const Home = ({user}) => {
         <h3 class="col-9" >Your Accounts</h3>
         <button type="button" class=" col-2 btn btn-success">Create Account</button>
       </div>
-      <div className="container">
-        
-      </div>
+      <Accounts user={user} BASE_URL={BASE_URL} />
     </div>
   )
 }

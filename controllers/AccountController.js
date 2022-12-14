@@ -11,7 +11,9 @@ const CreateAccount = async (req, res) => {
 
 const GetAccounts = async (req, res) => {
   try {
-    const accounts = await Account.findAll()
+    const accounts = await Account.findAll({
+      where: { userId: req.params.user_id }
+    })
     res.send(accounts)
   } catch (error) {
     return res.status(500).send(error.message)
