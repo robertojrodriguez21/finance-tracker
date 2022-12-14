@@ -27,20 +27,18 @@ const Transactions = ({user, BASE_URL}) => {
   }, [])
 
   const getAccountName = (accountId) => {
-    accounts.forEach((account) => {
-      if (accountId === account.id) {
-        console.log(account.name)
-        return account.name
+    for (let i = 0; i < accounts.length; i++) {
+      if (accountId === accounts[i].id) {
+        return accounts[i].name
       }
-    })
+    }
   }
 
   const getAccountType = (accountId) => {
-    accounts.map((account) => {
-      if (accountId === account.id) {
-        switch (account.type) {
+    for (let i = 0; i < accounts.length; i++) {
+      if (accountId === accounts[i].id) {
+        switch (accounts[i].type) {
           case 1:
-            console.log('Checking')
             return 'Checking'
           case 2:
             return 'Savings'
@@ -52,7 +50,7 @@ const Transactions = ({user, BASE_URL}) => {
             return 'N/A'
         }
       }
-    })
+    }
   }
 
   return (
@@ -76,7 +74,7 @@ const Transactions = ({user, BASE_URL}) => {
           {transactions.map((transaction) => (
             <tr key={transaction.id} className="table-active" onClick={() => {navigate(`/transactions/${transaction.id}`)}}>
               <th scope="row">{transaction.name}</th>
-              <td>{getAccountName(transaction.accountId)} - {getAccountType(transaction.id)}</td>
+              <td>{getAccountName(transaction.accountId)} - {getAccountType(transaction.accountId)}</td>
               <td>{transaction.date}</td>
               <td>${transaction.amount.toFixed(2)}</td>
             </tr>

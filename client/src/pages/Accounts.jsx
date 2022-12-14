@@ -83,6 +83,7 @@ const Accounts = ({user, BASE_URL}) => {
           ))}
         </tbody>
       </table>
+      <small className="text-warning">** ALWAYS CHECK WITH YOUR BANK FOR THE MOST ACCURATE INFORMATION **</small>
     </div>
   )
 }
