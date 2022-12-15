@@ -13,6 +13,7 @@ import CreateAccount from './pages/CreateAccount'
 import EditAccount from './pages/EditAccount'
 import Account from './pages/Account'
 import Transaction from './pages/Transaction'
+import Profile from './pages/Profile'
 // Components
 import Nav from './components/Nav'
 import Footer from './components/Footer'
@@ -85,6 +86,10 @@ function App() {
           <Route
             path="/transactions/create"
             element={<CreateTransaction user={user} BASE_URL={BASE_URL} />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile user={user} BASE_URL={BASE_URL} />}
           />
         </Routes>
       </main>

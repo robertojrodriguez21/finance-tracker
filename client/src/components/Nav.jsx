@@ -21,7 +21,7 @@ const Nav = ({user, authenticated, handleLogout}) => {
           <div className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Hi, {user.firstName}!</a>
             <div className="dropdown-menu">
-              <button className="dropdown-item" href="#">My Profile</button>
+              <button className="dropdown-item" onClick={() => {navigate('/profile')}}>My Profile</button>
               <button className="dropdown-item" onClick={handleLogout}>Logout</button>
             </div>
           </div>
