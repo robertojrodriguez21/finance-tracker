@@ -72,6 +72,33 @@ const Account = ({user, BASE_URL}) => {
     return newDate.toDateString()
   }
 
+  const setBalance = (account) => {
+    let currentBalance = account.balance
+
+    transactions.map((transaction) => {
+      if (parseInt(account.id) === parseInt(transaction.accountId)) {
+        switch (transaction.transactionType) {
+          case 1:
+            currentBalance -= transaction.amount
+            break;
+          case 2:
+            currentBalance += transaction.amount
+            break;
+          case 3:
+            currentBalance += transaction.amount
+            break;
+          case 4:
+            currentBalance -= transaction.amount
+            break;
+          default:
+            break;
+        }
+      }
+    })
+
+    return currentBalance
+  }
+
   return (
     <div className="container text-start">
       <br />
@@ -82,7 +109,7 @@ const Account = ({user, BASE_URL}) => {
       </div>
       <hr />
       <h2>Balance</h2>
-      <h5>${account.balance.toFixed(2)}</h5>
+      <h5>${setBalance(account).toFixed(2)}</h5>
       <h2>Limit</h2>
       {account.limit || account.limit === 0 ? 
         <h5>${account.limit.toFixed(2)}</h5> :
