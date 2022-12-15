@@ -76,7 +76,8 @@ const Account = ({user, BASE_URL}) => {
     <div className="container text-start">
       <br />
       <div className="container row">
-        <h1 className="col-10">{account.name} <small className="text-muted">{accountType(account.type)}</small></h1>
+        <h1 className="col-8">{account.name} <small className="text-muted">{accountType(account.type)}</small></h1>
+        <button type="button" className="col-2 btn btn-warning btn-lg" onClick={() => navigate(`/accounts/${id}/edit`)}>Edit</button>
         <button type="button" className="col-2 btn btn-danger btn-lg" onClick={deleteAccount}>Delete</button>
       </div>
       <hr />

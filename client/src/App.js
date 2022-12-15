@@ -7,10 +7,10 @@ import Login from './pages/Login'
 import CreateProfile from './pages/CreateProfile'
 import Home from './pages/Home'
 import Transactions from './pages/Transactions'
-import EditTransaction from './pages/EditTransaction'
 import CreateTransaction from './pages/CreateTransaction'
 import Accounts from './pages/Accounts'
 import CreateAccount from './pages/CreateAccount'
+import EditAccount from './pages/EditAccount'
 import Account from './pages/Account'
 import Transaction from './pages/Transaction'
 // Components
@@ -77,7 +77,10 @@ function App() {
             path="/transactions/:id"
             element={<Transaction user={user} BASE_URL={BASE_URL} />}
           />
-          <Route path="/transactions/:id/edit" element={<EditTransaction />} />
+          <Route
+            path="/accounts/:id/edit"
+            element={<EditAccount user={user} BASE_URL={BASE_URL} />}
+          />
           <Route
             path="/transactions/create"
             element={<CreateTransaction user={user} BASE_URL={BASE_URL} />}
