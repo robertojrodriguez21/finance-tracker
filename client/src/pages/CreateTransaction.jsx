@@ -4,7 +4,7 @@ import axios from "axios";
 const CreateTransaction = ({user, BASE_URL}) => {
   const [formValues, setFormValues] = useState({accountId: '', name: '', date: '', amount: '', transactionType: ''})
   const [accounts, setAccounts] = useState([])
-  const [selectedAccountType, setSelectedAccountType] = useState({selectedAccountTypeState: 0})
+  const [selectedAccountType, setSelectedAccountType] = useState(0)
 
   useEffect(() => {
     const getUserAccounts = async () => {
@@ -27,7 +27,7 @@ const CreateTransaction = ({user, BASE_URL}) => {
   const setAccountType = (accountId) => {
     for (let i = 0; i < accounts.length; i++) {
       if (parseInt(accounts[i].id) === parseInt(accountId)) {
-        setSelectedAccountType({selectedAccountTypeState: parseInt(accounts[i].type)})
+        setSelectedAccountType(parseInt(accounts[i].type))
       }
     }
   }
@@ -57,7 +57,7 @@ const CreateTransaction = ({user, BASE_URL}) => {
     <h1>Create Transaction</h1>
     <form className="container" onSubmit={handleSubmit}>
       <div className="col-4 offset-4 form-group mb-3">
-        <label htmlFor="accountId" className="form-label mt-4">Select Account</label>
+        <label htmlFor="accountId" className="form-label">Select Account</label>
         <select name='accountId' onChange={onChange} className="form-select" id="accountId">
           <option>Select Account</option>
           {accounts.map((account) => (
@@ -65,7 +65,32 @@ const CreateTransaction = ({user, BASE_URL}) => {
           ))}
         </select>
       </div>
-
+      {selectedAccountType === 1 || selectedAccountType === 2 ? 
+      <div className="col-4 offset-4 form-group mb-3">
+        <label htmlFor="transactionType" className="form-label">Select Transaction Type</label>
+        <select name='transactionType' onChange={handleChange} className="form-select" id="transactionType">
+          <option>Select Transaction Type</option>
+          <option value="1">Transaction/Purchase</option>
+          <option value="2">Deposit</option>
+        </select>
+      </div> : null}
+      {selectedAccountType === 3 ? 
+      <div className="col-4 offset-4 form-group mb-3">
+        <label htmlFor="transactionType" className="form-label">Select Transaction Type</label>
+        <select name='transactionType' onChange={handleChange} className="form-select" id="transactionType">
+          <option>Select Transaction Type</option>
+          <option value="3">Transaction/Purchase</option>
+          <option value="4">Payment</option>
+        </select>
+      </div> : null}
+      {selectedAccountType === 4 ? 
+      <div className="col-4 offset-4 form-group mb-3">
+        <label htmlFor="transactionType" className="form-label">Select Transaction Type</label>
+        <select name='transactionType' onChange={handleChange} className="form-select" id="transactionType">
+          <option>Select Transaction Type</option>
+          <option value="4">Payment</option>
+        </select>
+      </div> : null}
       <div className="col-4 offset-4 form-floating mb-3">
         <input required onChange={handleChange} value={formValues.name} name='name' type="text" className="form-control" id="floatingName" placeholder="Name"></input>
         <label htmlFor="floatingName">Name</label>
