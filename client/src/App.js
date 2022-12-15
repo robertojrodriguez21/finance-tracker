@@ -78,7 +78,10 @@ function App() {
             element={<Transaction user={user} BASE_URL={BASE_URL} />}
           />
           <Route path="/transactions/:id/edit" element={<EditTransaction />} />
-          <Route path="/transactions/create" element={<CreateTransaction />} />
+          <Route
+            path="/transactions/create"
+            element={<CreateTransaction user={user} BASE_URL={BASE_URL} />}
+          />
         </Routes>
       </main>
     </div>

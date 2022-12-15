@@ -1,83 +1,86 @@
-const CreateTransaction = () => {
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const CreateTransaction = ({user, BASE_URL}) => {
+  const [formValues, setFormValues] = useState({accountId: '', name: '', date: '', amount: '', transactionType: ''})
+  const [accounts, setAccounts] = useState([])
+  const [selectedAccountType, setSelectedAccountType] = useState({selectedAccountTypeState: 0})
+
+  useEffect(() => {
+    const getUserAccounts = async () => {
+      let response = await axios.get(`${BASE_URL}/account/${user.id}`)
+      setAccounts(response.data)
+    }
+
+    getUserAccounts()
+  }, [])
+
+  const onChange = (e) => {
+    handleChange(e)
+    setAccountType(e.target.value)
+  }
+
   const handleChange = (e) => {
     setFormValues({...formValues, [e.target.name]: e.target.value})
+  }
+
+  const setAccountType = (accountId) => {
+    for (let i = 0; i < accounts.length; i++) {
+      if (parseInt(accounts[i].id) === parseInt(accountId)) {
+        setSelectedAccountType({selectedAccountTypeState: parseInt(accounts[i].type)})
+      }
+    }
   }
 
   const handleSubmit = (e) => {
 
   }
+
+  const accountType = (type) => {
+    switch (type) {
+      case 1:
+        return 'Checking'
+      case 2:
+        return 'Savings'
+      case 3:
+        return 'Credit Card'
+      case 4:
+        return 'Loan'
+      default:
+        return 'N/A'
+    }
+  }
   
   return (
+    <>
+    <br></br>
+    <h1>Create Transaction</h1>
     <form className="container" onSubmit={handleSubmit}>
-      <div className="col-4 offset-4 form-floating">
+      <div className="col-4 offset-4 form-group mb-3">
+        <label htmlFor="accountId" className="form-label mt-4">Select Account</label>
+        <select name='accountId' onChange={onChange} className="form-select" id="accountId">
+          <option>Select Account</option>
+          {accounts.map((account) => (
+            <option key={account.id} value={account.id} onClick={() => console.log('HIT')} >{account.name} - {accountType(account.type)}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="col-4 offset-4 form-floating mb-3">
         <input required onChange={handleChange} value={formValues.name} name='name' type="text" className="form-control" id="floatingName" placeholder="Name"></input>
         <label htmlFor="floatingName">Name</label>
       </div>
-      <div className="col-4 offset-4 form-group mb-3">
-        <label htmlFor="accountType" className="form-label mt-4">Type of Account</label>
-        <select name='type' onChange={handleChange} className="form-select" id="accountType">
-          <option>Select</option>
-          <option value={1}>Checking</option>
-          <option value={2}>Savings</option>
-          <option value={3}>Credit Card</option>
-          <option value={4}>Loan</option>
-        </select>
+      <div className="col-4 offset-4 form-floating mb-3">
+        <input required onChange={handleChange} value={formValues.date} name='date' type="date" className="form-control" id="floatingDate" placeholder="Date"></input>
+        <label htmlFor="floatingDate">Date</label>
       </div>
       <div className="col-4 offset-4 form-floating mb-3">
-        <input required onChange={handleChange} value={formValues.balance} name='balance' type="text" className="form-control" id="floatingBalance" placeholder="Balance"></input>
-        <label htmlFor="floatingBalance">Balance</label>
+        <input required onChange={handleChange} value={formValues.amount} name='amount' type="text" className="form-control" id="floatingAmount" placeholder="Amount"></input>
+        <label htmlFor="floatingAmount">Amount</label>
       </div>
-      {parseInt(formValues.type) !== 4 && formValues.type !== '' ? 
-      <div className="col-4 offset-4 form-floating mb-3">
-        <input required onChange={handleChange} value={formValues.limit} name='limit' type="text" className="form-control" id="floatingLimit" placeholder="Account Limit"></input>
-        <label htmlFor="floatingLimit">Account Limit</label>
-        <small className="text-muted">For checking and saving accounts, enter the number 0.</small>
-      </div> : null}
-      {parseInt(formValues.type) === 3 || parseInt(formValues.type) === 4 ? 
-      <>
-        <div className="col-4 offset-4 form-floating">
-          <input required onChange={handleChange} value={formValues.minPayment} name='minPayment' type="text" className="form-control" id="floatingMinPayment" placeholder="Payment Minimum"></input>
-          <label htmlFor="floatingMinPayment">Payment Minimum</label>
-        </div>
-        <div className="col-4 offset-4 form-group mb-3">
-          <label htmlFor="dueDate" className="form-label mt-4">Payment Due Date</label>
-          <select name='dueDate' onChange={handleChange} className="form-select" id="dueDate">
-            <option>Select</option>
-            <option value={1}>1st</option>
-            <option value={2}>2nd</option>
-            <option value={3}>3rd</option>
-            <option value={4}>4th</option>
-            <option value={5}>5th</option>
-            <option value={6}>6th</option>
-            <option value={7}>7th</option>
-            <option value={8}>8th</option>
-            <option value={9}>9th</option>
-            <option value={10}>10th</option>
-            <option value={11}>11th</option>
-            <option value={12}>12th</option>
-            <option value={13}>13th</option>
-            <option value={14}>14th</option>
-            <option value={15}>15th</option>
-            <option value={16}>16th</option>
-            <option value={17}>17th</option>
-            <option value={18}>18th</option>
-            <option value={19}>19th</option>
-            <option value={20}>20th</option>
-            <option value={21}>21st</option>
-            <option value={22}>22nd</option>
-            <option value={23}>23rd</option>
-            <option value={24}>24th</option>
-            <option value={25}>25th</option>
-            <option value={26}>26th</option>
-            <option value={27}>27th</option>
-            <option value={28}>28th</option>
-          </select>
-          <small className="text-muted">For the 29th, 30th, and 31st of the month select 28th.</small>
-        </div>
-      </> : null}
-      <br></br>
-      <button type="submit" className="btn btn-primary">Create Account</button>
+      <button type="submit" className="btn btn-primary">Create Transaction</button>
     </form>
+    </>
   )
 }
 
