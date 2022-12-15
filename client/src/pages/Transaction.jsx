@@ -58,6 +58,11 @@ const Transaction = ({user, BASE_URL}) => {
     navigate(`/accounts/${transaction.accountId}`)
   }
 
+  const getDate = (date) => {
+    const newDate = new Date(date)
+    return newDate.toDateString()
+  }
+
   return (
     <div className="container text-start">
       <br></br>
@@ -69,7 +74,7 @@ const Transaction = ({user, BASE_URL}) => {
       <h2>Account</h2>
       <h5>{getAccountName(transaction.accountId)} <small className="text-muted">{getAccountType(transaction.accountId)}</small></h5>
       <h2>Date</h2>
-      <h5>{transaction.date}</h5>
+      <h5>{getDate(transaction.date)}</h5>
       <h2>Amount</h2>
       <h5>${transaction.amount.toFixed(2)}</h5>
     </div>
