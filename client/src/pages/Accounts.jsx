@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Accounts = ({user, BASE_URL}) => {
   const [accounts, setAccounts] = useState([])
+  const [transactions, setTransactions] = useState([])
   let navigate = useNavigate()
 
   useEffect(() => {
@@ -14,6 +15,42 @@ const Accounts = ({user, BASE_URL}) => {
 
     getUserAccounts()
   }, [])
+
+  useEffect(() => {
+    const getUserTransactions = async () => {
+      let response = await axios.get(`${BASE_URL}/transaction/${user.id}`)
+      setTransactions(response.data)
+    }
+
+    getUserTransactions()
+  }, [])
+
+  const setBalance = (account) => {
+    let currentBalance = account.balance
+
+    transactions.map((transaction) => {
+      if (parseInt(account.id) === parseInt(transaction.accountId)) {
+        switch (transaction.transactionType) {
+          case 1:
+            currentBalance -= transaction.amount
+            break;
+          case 2:
+            currentBalance += transaction.amount
+            break;
+          case 3:
+            currentBalance += transaction.amount
+            break;
+          case 4:
+            currentBalance -= transaction.amount
+            break;
+          default:
+            break;
+        }
+      }
+    })
+
+    return currentBalance
+  }
 
   const accountType = (type) => {
     switch (type) {
@@ -73,7 +110,7 @@ const Accounts = ({user, BASE_URL}) => {
             <tr key={account.id} className="table-active" onClick={() => {navigate(`/accounts/${account.id}`)}}>
               <th scope="row">{account.name}</th>
               <td>{accountType(account.type)}</td>
-              <td>${account.balance.toFixed(2)}</td>
+              <td>${setBalance(account).toFixed(2)}</td>
               {account.limit || account.limit === 0 ? 
                 <td>${account.limit.toFixed(2)}</td> :
                 <td>Limit not available</td>
