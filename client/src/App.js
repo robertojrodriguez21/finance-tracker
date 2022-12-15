@@ -47,7 +47,7 @@ function App() {
   }, [])
 
   return user && authenticated ? (
-    <div className="App">
+    <div className="App d-flex flex-column min-vh-100">
       <header>
         <Nav
           user={user}
@@ -55,7 +55,7 @@ function App() {
           handleLogout={handleLogout}
         />
       </header>
-      <main>
+      <main className="wrapper flex-grow-1">
         <Routes>
           <Route path="/" element={<Home user={user} BASE_URL={BASE_URL} />} />
           <Route
@@ -101,11 +101,11 @@ function App() {
       <Footer />
     </div>
   ) : (
-    <div className="App">
+    <div className="App d-flex flex-column min-vh-100">
       <header>
         <Nav user={user} />
       </header>
-      <main>
+      <main className="wrapper flex-grow-1">
         <Routes>
           <Route
             path="/*"
