@@ -55,8 +55,9 @@ const Account = ({user, BASE_URL}) => {
     }
   }
 
-  const deleteAccount = () => {
-    
+  const deleteAccount = async () => {
+    await axios.delete(`${BASE_URL}/account/${user.id}/${id}`)
+    navigate(`/accounts`)
   }
 
   return (

@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom"
 const Transactions = ({user, BASE_URL}) => {
   const [transactions, setTransactions] = useState([])
   const [accounts, setAccounts] = useState([])
-  const dateFormat = require('dateformat')
-  const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   let navigate = useNavigate()
 
