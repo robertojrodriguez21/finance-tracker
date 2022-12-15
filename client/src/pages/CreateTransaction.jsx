@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const CreateTransaction = ({user, BASE_URL}) => {
   const [formValues, setFormValues] = useState({accountId: '', name: '', date: '', amount: '', transactionType: ''})
   const [accounts, setAccounts] = useState([])
   const [selectedAccountType, setSelectedAccountType] = useState(0)
+  let navigate = useNavigate()
 
   useEffect(() => {
     const getUserAccounts = async () => {
@@ -33,7 +35,21 @@ const CreateTransaction = ({user, BASE_URL}) => {
   }
 
   const handleSubmit = (e) => {
+    e.preventDefault()
 
+    let newTransaction = {
+      userId: user.id, 
+      accountId: parseInt(formValues.accountId),
+      name: formValues.name, 
+      date: formValues.date,
+      amount: parseFloat(formValues.amount),
+      transactionType: parseInt(formValues.transactionType)
+    }
+
+    axios.post(`${BASE_URL}/transaction/create`, newTransaction)
+
+    setFormValues({ accountId: '', name: '', date: '', amount: '', transactionType: '' })
+    navigate('/transactions')
   }
 
   const accountType = (type) => {
