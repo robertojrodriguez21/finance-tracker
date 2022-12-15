@@ -60,6 +60,11 @@ const Account = ({user, BASE_URL}) => {
     navigate(`/accounts`)
   }
 
+  const getDate = (date) => {
+    const newDate = new Date(date)
+    return newDate.toDateString()
+  }
+
   return (
     <div className="container text-start">
       <br />
@@ -108,7 +113,7 @@ const Account = ({user, BASE_URL}) => {
               <tr key={transaction.id} className="table-active" onClick={() => {navigate(`/transactions/${transaction.id}`)}}>
                 <th scope="row">{transaction.name}</th>
                 <td>{account.name} <small className="text-muted">{accountType(account.type)}</small></td>
-                <td>{transaction.date}</td>
+                <td>{getDate(transaction.date)}</td>
                 <td>${transaction.amount.toFixed(2)}</td>
               </tr>
               : null
