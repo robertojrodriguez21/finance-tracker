@@ -47,7 +47,7 @@ const Accounts = ({user, BASE_URL}) => {
     <div className="container text-start">
       <br></br>
       <div className="container row">
-        <h1 className="col-10" >Your Accounts</h1>
+        <h1 className="col-10">Accounts</h1>
         <button type="button" className="col-2 btn btn-success btn-lg" onClick={() => {navigate('/accounts/create')}}>Create Account</button>
       </div>
       <br></br>

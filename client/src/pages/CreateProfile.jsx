@@ -25,7 +25,6 @@ const CreateProfile = ({BASE_URL}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('START')
 
     if (formValues.password !== formValues.verifyPassword) {
       togglePasswordVerified(false)
@@ -36,12 +35,9 @@ const CreateProfile = ({BASE_URL}) => {
       usersEmails.forEach(email => {
         if (email.email === formValues.email) {
           toggleEmailUsed(true)
-          console.log('SET TO TRUE')
         } 
       })
 
-      console.log('After forEach')
-      console.log(emailUsed)
       if (!emailUsed && passwordVerified) {
         await RegisterUser({
           firstName: formValues.firstName,
