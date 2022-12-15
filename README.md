@@ -1,6 +1,6 @@
 # Finance Tracker
 
-## Date: 12/15/2022
+## Last Updated: 12/15/2022
 
 ### By: Roberto J Rodriguez
 
@@ -10,7 +10,7 @@
 
 ### **_Description_**
 
-This application will allow you to keep track of all your finances. You will be able to add an account(Debit Cards, Credit Cards, and Loans). After you add that account you will be able to add transactions that occurred in that account. On the home page you will see all accounts and balances to each account.
+This application will allow you to keep track of all your finances. You will be able to add an account(Checking, Savings, Credit Cards, and Loans). After you add that account you will be able to add transactions that occurred in that account. On the home page you will see all accounts and balances to each account.
 
 The application will be created with PERN (PostgresSQL, Express, React, Node.js) Stack. It will also be styled with Bootstrap using a template from bootswatch.com.
 
@@ -46,14 +46,42 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 
 ## **_Project Screenshots_**
 
-Coming Soon
+## Login Page
+
+![Login Page](./diagrams/login.png)
+
+## Home Page
+
+![Home Page](./diagrams/homepage.png)
+
+## Account Page Example
+
+![Account Page Example](./diagrams/accountPage.png)
 
 ---
 
 ## **_Future Updates_**
 
-- [ ] Authentication
+### In Progress
+
+- [ ] Deploy
+- [ ] Add profile page
+- [ ] Allow user to delete profile
+- [ ] Allow user to delete all accounts
+
+### Future
+
 - [ ] View Transactions by Day, Week, and Month
+- [ ] Sort Transactions
+- [ ] Add Pagination to Transactions
+- [ ] Organize Components Better
+- [ ] Allow user to reset password
+- [ ] Add different account types
+- [ ] Update Diagrams
+
+### Done
+
+- [x] Authentication
 
 ---
 
