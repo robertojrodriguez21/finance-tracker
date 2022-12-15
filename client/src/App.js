@@ -15,6 +15,7 @@ import Account from './pages/Account'
 import Transaction from './pages/Transaction'
 // Components
 import Nav from './components/Nav'
+import Footer from './components/Footer'
 
 const BASE_URL = 'http://localhost:3001'
 
@@ -87,6 +88,7 @@ function App() {
           />
         </Routes>
       </main>
+      <Footer />
     </div>
   ) : (
     <div className="App">
@@ -110,6 +112,7 @@ function App() {
           />
         </Routes>
       </main>
+      <Footer />
     </div>
   )
 }
