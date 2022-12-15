@@ -76,6 +76,11 @@ const Transaction = ({user, BASE_URL}) => {
       <h5>{getAccountName(transaction.accountId)} <small className="text-muted">{getAccountType(transaction.accountId)}</small></h5>
       <h2>Date</h2>
       <h5>{getDate(transaction.date)}</h5>
+      <h2>Transaction Type</h2>
+      {transaction.transactionType === 1 ? <h5 className="text-danger">Transaction/Purchase</h5> : null}
+      {transaction.transactionType === 2 ? <h5 className="text-success">Deposit</h5> : null}
+      {transaction.transactionType === 3 ? <h5 className="text-danger">Transaction/Purchase</h5> : null}
+      {transaction.transactionType === 4 ? <h5 className="text-success">Payment</h5> : null}
       <h2>Amount</h2>
       <h5>${transaction.amount.toFixed(2)}</h5>
     </div>

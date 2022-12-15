@@ -111,6 +111,7 @@ const Account = ({user, BASE_URL}) => {
               <th scope="col">Name</th>
               <th scope="col">Account</th>
               <th scope="col">Date</th>
+              <th scope="col">Transaction Type</th>
               <th scope="col">Amount</th>
             </tr>
           </thead>
@@ -121,6 +122,10 @@ const Account = ({user, BASE_URL}) => {
                 <th scope="row">{transaction.name}</th>
                 <td>{account.name} <small className="text-muted">{accountType(account.type)}</small></td>
                 <td>{getDate(transaction.date)}</td>
+                {transaction.transactionType === 1 ? <td className="text-danger">Transaction/Purchase</td> : null}
+                {transaction.transactionType === 2 ? <td className="text-success">Deposit</td> : null}
+                {transaction.transactionType === 3 ? <td className="text-danger">Transaction/Purchase</td> : null}
+                {transaction.transactionType === 4 ? <td className="text-success">Payment</td> : null}
                 <td>${transaction.amount.toFixed(2)}</td>
               </tr>
               : null
