@@ -76,14 +76,14 @@ const Accounts = ({user, BASE_URL}) => {
                 <td>${account.minPayment.toFixed(2)}</td>
                 <td>{dueDateString(account.dueDate)}</td>
                 </> : <>
-                <td>No Payment</td> 
-                <td>No Payment</td> 
+                <td>No payment</td> 
+                <td>No payment</td> 
               </>}
             </tr>
           ))}
         </tbody>
       </table>
-      <small className="text-warning">** ALWAYS CHECK WITH YOUR BANK FOR THE MOST ACCURATE INFORMATION **</small>
+      <small className="text-warning">** ALWAYS CHECK WITH YOUR ACCOUNT PROVIDER FOR CORRECT INFORMATION **</small>
     </div>
   )
 }

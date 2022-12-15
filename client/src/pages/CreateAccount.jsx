@@ -104,7 +104,7 @@ const CreateAccount = ({userId, BASE_URL}) => {
         <button type="submit" className="btn btn-primary">Create Account</button>
       </form>
       <br></br>
-      <small className="text-warning">** ALWAYS CHECK WITH YOUR BANK FOR THE MOST ACCURATE INFORMATION **</small>
+      <small className="text-warning">** ALWAYS CHECK WITH YOUR ACCOUNT PROVIDER FOR CORRECT INFORMATION **</small>
     </>
   )
 }

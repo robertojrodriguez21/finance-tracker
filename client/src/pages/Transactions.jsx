@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 const Transactions = ({user, BASE_URL}) => {
   const [transactions, setTransactions] = useState([])
   const [accounts, setAccounts] = useState([])
+  const dateFormat = require('dateformat')
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
   let navigate = useNavigate()
 
@@ -53,6 +55,11 @@ const Transactions = ({user, BASE_URL}) => {
     }
   }
 
+  const getDate = (date) => {
+    const newDate = new Date(date)
+    return newDate.toDateString()
+  }
+
   return (
     <div className="container text-start">
       <br></br>
@@ -75,7 +82,7 @@ const Transactions = ({user, BASE_URL}) => {
             <tr key={transaction.id} className="table-active" onClick={() => {navigate(`/transactions/${transaction.id}`)}}>
               <th scope="row">{transaction.name}</th>
               <td>{getAccountName(transaction.accountId)} <small className="text-muted">{getAccountType(transaction.accountId)}</small></td>
-              <td>{transaction.date}</td>
+              <td>{getDate(transaction.date)}</td>
               <td>${transaction.amount.toFixed(2)}</td>
             </tr>
           ))}

@@ -81,9 +81,9 @@ const Account = ({user, BASE_URL}) => {
         <h5>{dueDateString(account.dueDate)}</h5>
         </> : <>
         <h2>Payment Minimum</h2>
-        <h5>No Payment</h5>
+        <h5>No payment</h5>
         <h2>Payment Due Date</h2>
-        <h5>No Payment</h5>
+        <h5>No payment</h5>
       </>}
       <hr />
       <div className="container text-start">
