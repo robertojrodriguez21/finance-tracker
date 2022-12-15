@@ -88,7 +88,13 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile user={user} BASE_URL={BASE_URL} />}
+            element={
+              <Profile
+                user={user}
+                BASE_URL={BASE_URL}
+                handleLogout={handleLogout}
+              />
+            }
           />
         </Routes>
       </main>
