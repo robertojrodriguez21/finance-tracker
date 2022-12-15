@@ -23,7 +23,6 @@ const BASE_URL = 'http://localhost:3001'
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
-  const [transactions, setTransactions] = useState([])
 
   // Logout function
   const handleLogout = () => {
