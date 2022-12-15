@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Transaction.init(
     {
-      name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       userId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
@@ -31,8 +34,18 @@ module.exports = (sequelize, DataTypes) => {
           key: 'id'
         }
       },
-      date: DataTypes.DATE,
-      amount: DataTypes.DOUBLE
+      date: {
+        type: DataTypes.DATE,
+        allowNull: false
+      },
+      amount: {
+        type: DataTypes.DOUBLE,
+        allowNull: false
+      },
+      transactionType: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
     },
     {
       sequelize,

@@ -37,6 +37,10 @@ module.exports = {
         type: Sequelize.DOUBLE,
         allowNull: false
       },
+      transactionType: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
