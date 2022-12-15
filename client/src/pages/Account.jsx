@@ -50,6 +50,12 @@ const Account = ({user, BASE_URL}) => {
         return '2nd of each month'
       case 3:
         return '3rd of each month'
+      case 21:
+        return '21st of each month'
+      case 22:
+        return '22nd of each month'
+      case 23:
+        return '23rd of each month'
       default:
         return date + 'th of each month'
     }
