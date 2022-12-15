@@ -1,5 +1,10 @@
 const Footer = () => {
-  return <div className="container-fluid text-center m-10 bg-light">test</div>
+  return (
+    <footer>
+      <br />
+      <div className="container-fluid text-center m-10 bg-dark">Finance Tracker ⓒ 2022</div>
+    </footer>
+  )
 }
 
 export default Footer
