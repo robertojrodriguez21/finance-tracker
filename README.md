@@ -64,9 +64,8 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 
 ### In Progress
 
+- [ ] DRY my code
 - [ ] Deploy
-- [ ] Add profile page
-- [ ] Allow user to delete profile
 - [ ] Allow user to delete all accounts
 
 ### Future
@@ -82,6 +81,8 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 ### Done
 
 - [x] Authentication
+- [x] Add profile page
+- [x] Allow user to delete profile
 
 ---
 
