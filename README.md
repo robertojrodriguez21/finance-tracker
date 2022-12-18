@@ -60,16 +60,18 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 
 ---
 
-## **_Future Updates_**
+# **_Future Updates_**
+
+## **_Features_**
 
 ### In Progress
 
-- [ ] DRY my code
 - [ ] Deploy
-- [ ] Allow user to delete all accounts
 
 ### Future
 
+- [ ] DRY my code
+- [ ] Allow user to delete all accounts
 - [ ] View Transactions by Day, Week, and Month
 - [ ] Sort Transactions
 - [ ] Add Pagination to Transactions
@@ -77,8 +79,22 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 - [ ] Allow user to reset password
 - [ ] Add different account types
 - [ ] Update Diagrams
+- [ ] Change button sized for
+- [ ] Updated CHD and ERD diagrams
 
-### Done
+## **_Bugs_**
+
+### In Progress
+
+- [ ] Create profile button needs to be clicked twice after updating email.
+  - Wrong email red text is removed but user has to click button again to confirm creation
+
+### Future
+
+- [ ] When user inputs wrong email or password, let user know.
+  - Page stays static
+
+## **_Completed Updates_**
 
 - [x] Authentication
 - [x] Add profile page
