@@ -12,7 +12,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "build": "npm install && npx sequelize-cli db:migrate"
   },
   "name": "finance-tracker",
   "description": "## Date: 12/15/2022",
