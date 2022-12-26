@@ -13,7 +13,7 @@ module.exports = {
   },
   production: {
     database: 'finance_tracker_production',
-    host: '127.0.0.1',
+    host: 'https://my-personal-finance-tracker.herokuapp.com/',
     dialect: 'postgres',
     dialectOptions: {
       ssl: {
