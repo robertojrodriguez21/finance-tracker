@@ -18,7 +18,7 @@ import Profile from './pages/Profile'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL = 'https://my-personal-finance-tracker.herokuapp.com/'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
