@@ -20,7 +20,7 @@ The application will be created with PERN (PostgresSQL, Express, React, Node.js)
 
 ### - [Trello Board](https://trello.com/b/rIJwg9G5/finance-tracker)
 
-### - [Deployed Site]() (Coming Soon)
+### - [Deployed Site](https://finance-tracker-fe.herokuapp.com/)
 
 ---
 
